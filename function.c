@@ -314,6 +314,7 @@ void searchStudents(Students students[], int countS){
 		getchar();
 		return;
 	}
+	
 	printf("Moi ban nhap ten sinh vien can tim: ");
 	fgets(findName,sizeof(findName),stdin);
 	findName[strcspn(findName,"\n")] = '\0';
@@ -348,6 +349,11 @@ void editStudents(Students students[], int *countS){
 	clearScreen();
 	char findID[10], newName[20],newEmail[30],newPhone[20],newCourse[20];
 	int flag = 0,edit = -1,newNumCourse;
+	if(countS == 0){
+		printf("khong co gi trong danh sach! moi ban nhap hoc sinh vao danh sach da\nBam nut Enter de quay lai: ");
+		getchar();
+		return;
+	}
 	printf("Moi nhap ID sinh vien ban muon sua: ");
 	fgets(findID,sizeof(findID),stdin);
 	findID[strcspn(findID,"\n")] = '\0';
@@ -413,6 +419,11 @@ void deleteStudents(Students students[], int *countS){
 	clearScreen();
 	char deleteID[10];
 	int flag = 0;
+	if(countS == 0){
+		printf("khong co gi trong danh sach! moi ban nhap hoc sinh vao danh sach da\nBam nut Enter de quay lai: ");
+		getchar();
+		return;
+	}
 	printf("Moi ban nhap id can xoa:");
 	fgets(deleteID,sizeof(deleteID),stdin);
 	deleteID[strcspn(deleteID,"\n")] = '\0';
@@ -446,10 +457,11 @@ void sortStudents(Students students[], int countS){
 	loadStudents(students, &countS);
 	char ans;
 	Students temp;
-	if (countS <= 0) {
-        printf("Error, there is no students in the file!\n");
-        return;
-    }
+if(countS == 0){
+		printf("khong co gi trong danh sach! moi ban nhap hoc sinh vao danh sach da\nBam nut Enter de quay lai: ");
+		getchar();
+		return;
+	}
 
     printf("\nMoi ban chon cach sap xep(theo ten):\na) Tang dan\nb) Giam dan\nLua chon cua ban: ");
     scanf(" %c", &ans);
@@ -703,6 +715,11 @@ void searchTeachers(Teachers teachers[], int countT) {
 void editTeachers(Teachers teachers[], int *countT){
 	clearScreen();
 	loadTeachers(teachers,&countT);
+	if(countT == 0){
+		printf("khong co gi trong danh sach! moi ban nhap hoc sinh vao danh sach da\nBam nut Enter de quay lai: ");
+		getchar();
+		return;
+	}
 	char findID[10], newName[20],newEmail[30],newPhone[20];
 	int flag = 0,edit = -1;
 	printf("Moi nhap ID giao vien ban muon sua: ");
@@ -749,6 +766,7 @@ void editTeachers(Teachers teachers[], int *countT){
             strcpy(teachers[edit].Phone, newPhone);
 		}
 		}
+		saveTeachers(teachers, countT);
         printf("Chinh sua thanh cong !\nBam nut enter de ve trang chu");
         getchar();
         return;
@@ -758,6 +776,11 @@ void deleteTeachers(Teachers teachers[], int *countT){
 	clearScreen();
 	char deleteID[10];
 	int flag = 0;
+	if(countT == 0){
+		printf("khong co gi trong danh sach! moi ban nhap hoc sinh vao danh sach da\nBam nut Enter de quay lai: ");
+		getchar();
+		return;
+	}
 	printf("Moi ban nhap id can xoa:");
 	fgets(deleteID,sizeof(deleteID),stdin);
 	deleteID[strcspn(deleteID,"\n")] = '\0';
@@ -791,10 +814,11 @@ void sortTeachers(Teachers teachers[], int countT){
 	loadTeachers(teachers,&countT);
 	char ans;
 	Teachers clone;
-	if (countT <= 0) {
-        printf("Error, there is no teachers in the file!\n");
-        return;
-    }
+	if(countT == 0){
+		printf("khong co gi trong danh sach! moi ban nhap hoc sinh vao danh sach da\nBam nut Enter de quay lai: ");
+		getchar();
+		return;
+	}
 
     printf("\nMoi ban chon cach sap xep(theo ten):\na) Tang dan\nb) Giam dan\nLua chon cua ban: ");
     scanf(" %c", &ans);
